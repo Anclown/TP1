@@ -6,64 +6,89 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
 public class MainActivity extends AppCompatActivity {
     public static final String PREFERENCES_NAME = "theme_preferences";
     public static final String THEME_KEY = "current_theme";
+    private int currentTheme;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedPreferences preferences = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE);
-        int theme = preferences.getInt(THEME_KEY, R.style.Theme_TP1);
+        int theme = getIntent().getIntExtra("theme", R.style.Theme_TP11);
+        int dark_theme = getIntent().getIntExtra("dark_theme",R.style.Theme_TP11_dark);
+        setTheme(theme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        applyTheme(theme);
+        Button btn = findViewById(R.id.button2);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ChangeActivity();
+            }
+        });
+
         Switch themeSwitch = findViewById(R.id.switch2);
         themeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                SharedPreferences preferences = getSharedPreferences(PREFERENCES_NAME, MODE_PRIVATE);
-                SharedPreferences.Editor editor = preferences.edit();
-                if (isChecked) {
-                    editor.putInt(THEME_KEY, R.style.Theme_TP1);
-                    applyTheme(R.style.Theme_TP1);
-                } else {
-                    editor.putInt(THEME_KEY, R.style.Theme_TP11);
-                    applyTheme(R.style.Theme_TP11);
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                if (getIntent().getIntExtra("theme", R.style.Theme_TP11)==1) {
+                    if (isChecked) {
+                        intent.putExtra("theme", R.style.Theme_TP11_dark);
+                        currentTheme = 1;
+                    } else {
+                        intent.putExtra("theme", R.style.Theme_TP11);
+                        currentTheme = 0;
+                    }
                 }
-                editor.apply();
+                else {
+                    if (!isChecked) {
+                        intent.putExtra("theme", R.style.Theme_TP11);
+                        currentTheme = 0;
+                    } else {
+                        intent.putExtra("theme", R.style.Theme_TP11_dark);
+                        currentTheme = 1;
+                    }
+                }
+                startActivity(intent);
+                finish();
             }
         });
     }
 
-    private void applyTheme(int theme) {
-        setTheme(theme);
-        // Update any elements in your layout that are affected by the theme change
+    private void ChangeActivity() {
+        Intent myIntent = new Intent(MainActivity.this, Detail_Activity.class);
+        myIntent.putExtra("MessageKey", " le message ");
+        startActivity(myIntent);
     }
+
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("iut","onResume");
+        Log.d("iut", "onResume");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("iut","onStart");
+        Log.d("iut", "onStart");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d("iut","onPause");
+        Log.d("iut", "onPause");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.d("iut","onDestroy");
+        Log.d("iut", "onDestroy");
     }
 
 

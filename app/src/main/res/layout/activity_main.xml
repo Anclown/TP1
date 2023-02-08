@@ -58,8 +58,8 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/textInputEditText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="408dp"
+        android:layout_height="59dp"
         android:layout_marginTop="15dp"
         android:hint="Nom"
         app:layout_constraintEnd_toEndOf="parent"
@@ -68,8 +68,8 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="410dp"
+        android:layout_height="55dp"
         android:layout_marginTop="15dp"
         android:hint="Mail"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,8 +79,8 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editText3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="411dp"
+        android:layout_height="65dp"
         android:layout_marginTop="15dp"
         android:hint="Téléphone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,13 +90,24 @@
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/editText2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="410dp"
+        android:layout_height="63dp"
         android:layout_marginTop="15dp"
         android:hint="Prenom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

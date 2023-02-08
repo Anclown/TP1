@@ -3,4 +3,8 @@
     <string name="Homme">Man</string>
     <string name="Femme">Woman</string>
     <string name="Autre">Other</string>
+    <string name="Nom">Last Name</string>
+    <string name="Prenom">First Name</string>
+    <string name="Mail">Email</string>
+    <string name="Téléphone">Phone</string>
 </resources>
