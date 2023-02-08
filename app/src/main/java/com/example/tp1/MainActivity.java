@@ -20,11 +20,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         int theme = getIntent().getIntExtra("theme", R.style.Theme_TP11);
-        int dark_theme = getIntent().getIntExtra("dark_theme",R.style.Theme_TP11_dark);
         setTheme(theme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn = findViewById(R.id.button2);
+        Button btn = findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -37,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                if (getIntent().getIntExtra("theme", R.style.Theme_TP11)==1) {
+                if (getIntent().getIntExtra("theme", R.style.Theme_TP11)==2131690195) {
+                    Log.e("blabla",String.valueOf(theme));
                     if (isChecked) {
                         intent.putExtra("theme", R.style.Theme_TP11_dark);
                         currentTheme = 1;
@@ -47,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
                 else {
-                    if (!isChecked) {
+                    Log.e("clear",String.valueOf(theme));
+                    themeSwitch.setChecked(true);
+                    if (isChecked) {
                         intent.putExtra("theme", R.style.Theme_TP11);
                         currentTheme = 0;
                     } else {

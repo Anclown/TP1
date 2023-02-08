@@ -19,16 +19,16 @@ public class Detail_Activity extends AppCompatActivity {
         String maChaine = getIntent().getStringExtra("name");
         if (maChaine != null) {
             Log.e("get message", maChaine);
-            TextInputEditText t = findViewById(R.id.editText2);
+            TextInputEditText t = findViewById(R.id.textInputEditText2);
             t.setText(maChaine);
         }
         findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //finish();
-                Intent i = new Intent();
+                finish();
+                /*Intent i = new Intent();
                 i.putExtra("tintin","milou");
-                setResult(RESULT_OK, i);
+                setResult(RESULT_OK, i);*/
             }
         });
     }
